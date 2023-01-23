@@ -4,6 +4,11 @@ Fix some bugs and use cleaner implementation. Modified from:
 - https://github.com/drenther/use-clamp-text/blob/main/src/index.ts
 - https://github.com/zoltantothcom/react-clamp-lines/blob/master/src/index.js
 
+## Install
+
+```bash
+npm i @yukimoto/use-clamp-text
+```
 ## Usage
 ```jsx
 const component = () => {
