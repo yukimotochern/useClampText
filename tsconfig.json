@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
+    "target": "ES5",
     "module": "commonjs",
     "declaration": true,
     "outDir": "./lib",
-    "strict": true
+    "strict": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "lib": ["es5", "ES2018", "dom"]
   },
-  "include": ["src"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "**/__tests__/*"]
 }
