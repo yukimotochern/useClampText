@@ -175,8 +175,9 @@ export const useClampText = <
        */
       const currentText = textContainer.innerText;
       // native javascript loop for efficiency
-      // eslint-disable-next-line no-var
+      // tslint:disable-next-line no-var-keyword
       for (var x = 0; x < currentText.length; x++) {
+        // tslint:disable-next-line no-shadowed-variable
         const clientHeight = getHeight(wrapperContainer);
         if (clientHeight <= maxHeight || textContainer.innerText.length === 0) {
           break;
@@ -197,11 +198,12 @@ export const useClampText = <
       if (minSpaceCharNum) {
         textContainer.innerText = textContainer.innerText.slice(0, -minSpaceCharNum);
       }
-      // eslint-disable-next-line no-var
+      // tslint:disable-next-line no-var-keyword
       for (var x = 0; x < currentText.length - minSpaceCharNum; x++) {
         // add space
         textContainer.innerText = textContainer.innerText + endSpace;
         // check
+        // tslint:disable-next-line no-shadowed-variable
         const clientHeight = getHeight(wrapperContainer);
         if (clientHeight <= maxHeight || textContainer.innerText.length === 0) {
           // remove space
