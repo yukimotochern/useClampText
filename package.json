@@ -1,6 +1,6 @@
 {
   "name": "@yukimoto/use-clamp-text",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This package provide a custome hook that can limit the text in the container in specified line number.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -22,7 +22,12 @@
     "React",
     "Hook",
     "Clamp",
-    "Line Number"
+    "Line Number",
+    "See more",
+    "See less",
+    "clamp text",
+    "read more",
+    "read less"
   ],
   "author": "Yukimoto",
   "license": "MIT",
