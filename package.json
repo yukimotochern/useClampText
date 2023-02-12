@@ -50,8 +50,7 @@
   ],
   "dependencies": {
     "lodash": "^4.17.21",
-    "react": ">=16.8.0",
-    "rooks": "^7.4.3"
+    "react": ">=16.8.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0"

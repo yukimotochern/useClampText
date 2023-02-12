@@ -4,7 +4,8 @@
  * 2. https://github.com/zoltantothcom/react-clamp-lines/blob/master/src/index.js
  */
 import { useRef, useState, useCallback, useLayoutEffect } from 'react';
-import { useOnWindowResize, useDebounce } from 'rooks';
+import { useDebounce } from './useDebounce';
+import { useOnWindowResize } from './useOnWindowResize';
 
 interface ClampTextconfig {
   originalText: string;
@@ -15,11 +16,20 @@ interface ClampTextconfig {
   endSpaceNumber?: number;
 }
 
-export const useClampText = <
-  WrapperContainer extends HTMLElement,
-  AddonsContainer extends HTMLElement,
-  TextContainer extends HTMLElement,
->({
+interface Refs {
+  WrapperContainer: HTMLElement;
+  AddonsContainer: HTMLElement;
+  TextContainer: HTMLElement;
+}
+
+const getHeight = (element: HTMLElement) => {
+  const style = window.getComputedStyle(element);
+  const paddingHeight = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+  const innerHeight = element.getBoundingClientRect().height;
+  return innerHeight - paddingHeight;
+};
+
+export const useClampText = <RF extends Refs>({
   originalText = '',
   lines = 2,
   debounceTime = 300,
@@ -29,9 +39,9 @@ export const useClampText = <
 }: ClampTextconfig) => {
   const longEnoughToClampRef = useRef(false);
   const maxHeightRef = useRef(0);
-  const wrapperContainerRef = useRef<WrapperContainer>(null);
-  const textContainerRef = useRef<TextContainer>(null);
-  const addOnsContainerRef = useRef<AddonsContainer>(null);
+  const wrapperContainerRef = useRef<RF['WrapperContainer']>(null);
+  const textContainerRef = useRef<RF['TextContainer']>(null);
+  const addOnsContainerRef = useRef<RF['AddonsContainer']>(null);
   const initializedRef = useRef(false);
 
   const [{ clamped, clampedText, isClampLinesApplied }, setClampState] = useState({
@@ -44,13 +54,6 @@ export const useClampText = <
     clampedText: '.',
     isClampLinesApplied: false,
   });
-
-  const getHeight = (element: HTMLElement) => {
-    const style = window.getComputedStyle(element);
-    const paddingHeight = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
-    const innerHeight = element.getBoundingClientRect().height;
-    return innerHeight - paddingHeight;
-  };
 
   const initializeHeight = useCallback(() => {
     /**
