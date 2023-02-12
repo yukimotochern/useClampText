@@ -36,7 +36,7 @@ const component = () => {
       <span ref={textContainerRef}>{clampedText}</span>
       {longEnoughToClamp ? (
         <button ref={addOnsContainerRef} onClick={toggleClamp}>
-          {clamped ? 'Show more' : 'Show less'}
+          {clamped ? '...show more' : '...show less'}
         </button>
       ) : null}
     </div>
