@@ -22,17 +22,18 @@ const component = () => {
     toggleClamp
   } = useClampText<{
     WrapperContainer: HTMLDivElement,
-    AddonsContainer: HTMLButtonElement,
-    TextContainer: HTMLDivElement
+    TextContainer: HTMLSpanElement,
+    AddonsContainer: HTMLButtonElement
   }>({
     originalText: 'some potentially really long text...',
     lines: 2, // At most how many lines
     endSpaceNumber: 4, // how many trailing space,
-    unitSpaceChar: '*' // single trailing space should be the width of this char
+    unitSpaceChar: '*', // single trailing space should be the width of this char
+    debounceTime: 100 // in miliseconds
   })
   return (
     <div ref={wrapperContainerRef}>
-      <div ref={textContainerRef}>{clampedText}</div>
+      <span ref={textContainerRef}>{clampedText}</span>
       {longEnoughToClamp ? (
         <button ref={addOnsContainerRef} onClick={toggleClamp}>
           {clamped ? 'Show more' : 'Show less'}
