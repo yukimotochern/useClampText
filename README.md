@@ -6,6 +6,9 @@ Fix some bugs and use cleaner implementation. Modified from:
 - https://github.com/drenther/use-clamp-text/blob/main/src/index.ts
 - https://github.com/zoltantothcom/react-clamp-lines/blob/master/src/index.js
 
+Like this hook?
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/yukimoto)
+
 ## Install
 
 ```bash
