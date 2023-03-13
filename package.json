@@ -1,6 +1,6 @@
 {
   "name": "@yukimoto/use-clamp-text",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "This package provide a custome hook that can limit the text in the container in specified line number.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
