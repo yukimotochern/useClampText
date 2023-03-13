@@ -6,10 +6,6 @@ Fix some bugs and use cleaner implementation. Modified from:
 - https://github.com/drenther/use-clamp-text/blob/main/src/index.ts
 - https://github.com/zoltantothcom/react-clamp-lines/blob/master/src/index.js
 
-Like this hook?
-
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/yukimoto)
-
 ## Install
 
 ```bash
@@ -18,7 +14,7 @@ npm i @yukimoto/use-clamp-text
 
 ## Usage
 
-```jsx
+```tsx
 const component = () => {
   const {
     longEnoughToClamp,
@@ -28,20 +24,17 @@ const component = () => {
     clamped,
     clampedText,
     toggleClamp,
-  } =
-    useClampText <
-    {
-      WrapperContainer: HTMLDivElement,
-      TextContainer: HTMLSpanElement,
-      AddonsContainer: HTMLButtonElement,
-    } >
-    {
-      originalText: 'some potentially really long text...',
-      lines: 2, // At most how many lines
-      endSpaceNumber: 4, // how many trailing space,
-      unitSpaceChar: '*', // single trailing space should be the width of this char
-      debounceTime: 100, // in miliseconds
-    };
+  } = useClampText<{
+    WrapperContainer: HTMLDivElement;
+    TextContainer: HTMLSpanElement;
+    AddonsContainer: HTMLButtonElement;
+  }>({
+    originalText: 'some potentially really long text...',
+    lines: 2, // At most how many lines
+    endSpaceNumber: 4, // how many trailing space,
+    unitSpaceChar: '*', // single trailing space should be the width of this char
+    debounceTime: 100, // in miliseconds
+  });
   return (
     <div ref={wrapperContainerRef}>
       <span ref={textContainerRef}>{clampedText}</span>
